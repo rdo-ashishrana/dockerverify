@@ -8,7 +8,7 @@ on:
 
 jobs:
   test-docker-login:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Check Docker secrets presence
         run: |
