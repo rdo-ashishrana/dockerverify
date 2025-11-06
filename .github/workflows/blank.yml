@@ -1,0 +1,23 @@
+name: Verify Docker Login
+on: [workflow_dispatch]
+
+jobs:
+  test-docker-login:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Docker secrets presence
+        run: |
+          if [ -z "${{ secrets.DOCKER_ORG }}" ]; then
+            echo "❌ DOCKER_USERNAME missing"
+          else
+            echo "✅ DOCKER_USERNAME set"
+          fi
+          if [ -z "${{ secrets.DOCKER_ACCESS_TOKEN }}" ]; then
+            echo "❌ DOCKER_TOKEN missing"
+          else
+            echo "✅ DOCKER_TOKEN set"
+          fi
+
+      - name: Try Docker login
+        run: |
+          echo "${{ secrets.DOCKER_ACCESS_TOKEN }}" | docker login -u "${{ secrets.DOCKER_ORG }}" --password-stdin
