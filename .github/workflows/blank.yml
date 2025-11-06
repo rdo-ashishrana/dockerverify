@@ -1,5 +1,10 @@
 name: Verify Docker Login
-on: [workflow_dispatch]
+
+# Trigger deployment only when changes are pushed to the mainbranch
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   test-docker-login:
