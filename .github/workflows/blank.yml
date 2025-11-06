@@ -1,6 +1,5 @@
 name: Verify Docker Login
 
-# Trigger deployment only when changes are pushed to the mainbranch
 on:
   push:
     branches:
@@ -8,7 +7,7 @@ on:
 
 jobs:
   test-docker-login:
-    runs-on: self-hosted
+    runs-on: [self-hosted, Windows]
     steps:
       - name: Check Docker secrets presence
         run: |
