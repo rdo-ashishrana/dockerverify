@@ -8,7 +8,7 @@ jobs:
       - name: Check Docker secrets presence
         run: |
           if [ -z "${{ secrets.DOCKER_ORG }}" ]; then
-            echo "❌ DOCKER_USERNAME missing"
+            echo "❌ DOOCKER_USERNAME missing"
           else
             echo "✅ DOCKER_USERNAME set"
           fi
